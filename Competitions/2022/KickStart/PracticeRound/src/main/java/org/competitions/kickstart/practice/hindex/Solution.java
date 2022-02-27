@@ -113,27 +113,30 @@ public class Solution {
             return result;
         }
 
-        private long countPapersWithAtLeastCitations(int hindex) {
-            return citationsCount.tailMap(hindex)
-                    .entrySet()
-                    .stream()
-                    .filter(x -> x.getKey() >= hindex)
-                    .mapToInt(Map.Entry::getValue)
-                    .sum();
+        private boolean hIndexExists(int hindex) {
+            var papersSum = 0;
+            var entrySet = citationsCount.tailMap(hindex)
+                    .entrySet();
+            for (var pair : entrySet) {
+                papersSum += pair.getValue();
+                if (papersSum >= hindex) {
+                    return true;
+                }
+            }
+            return false;
         }
 
         private int calculateHIndex(int citations, int previousHIndex, int numberOfPapers) {
             citationsCount.compute(citations, (x, y) -> y != null ? y + 1 : 1);
 
-            if (citationsCount.size() == 1) {
+            if (numberOfPapers == 1) {
                 return 1;
             }
 
             int hIndex = previousHIndex;
-            for (int i = previousHIndex + 1; i < numberOfPapers; i++) {
+            for (int i = previousHIndex + 1; i <= numberOfPapers; i++) {
 
-                var count = countPapersWithAtLeastCitations(i);
-                if (i <= count) {
+                if (hIndexExists(i)) {
                     hIndex = i;
                     continue;
                 }
