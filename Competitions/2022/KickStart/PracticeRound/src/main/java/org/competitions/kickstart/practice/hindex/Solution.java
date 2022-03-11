@@ -108,6 +108,7 @@ public class Solution {
             for (int i = 0; i < numberOfPapers; i++) {
 
                 result.add(calculateHIndex(citationsPerPaper[i], previousHIndex, numberOfPapers));
+
                 previousHIndex = result.get(i);
             }
             return result;
@@ -142,6 +143,12 @@ public class Solution {
                 }
 
                 break;
+            }
+
+            if (hIndex != previousHIndex) {
+                // remove keys under h-index
+                var keysToRemove = new ArrayList<>(citationsCount.headMap(1).keySet());
+                keysToRemove.forEach(key -> citationsCount.remove(key));
             }
 
             return hIndex;
