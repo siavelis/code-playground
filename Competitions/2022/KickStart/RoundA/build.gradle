@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'org.competitions.kickstart.practice'
+group = 'org.competitions.kickstart.rounda'
 version = '1.0'
 
 repositories {
