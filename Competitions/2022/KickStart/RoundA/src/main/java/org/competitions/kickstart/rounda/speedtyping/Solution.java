@@ -73,26 +73,30 @@ public class Solution {
             int cursorTyped = 0;
             int removedChars = 0;
 
-            while (cursorExpected < expected.length()) {
 
+            while (cursorExpected < expected.length()
+                    && cursorTyped < typed.length()) {
+
+                // check current characters
                 if (Objects.equals(
                         expected.charAt(cursorExpected),
                         typed.charAt(cursorTyped)
                 )) {
+                    // move both cursors
                     cursorTyped++;
                     cursorExpected++;
                 } else {
+                    // remove character and move cursor
                     removedChars++;
                     cursorTyped++;
                 }
 
-                if (cursorTyped == typed.length()) {
-                    break;
-                }
             }
 
+            // did consumed expected value?
             if (cursorExpected == expected.length()) {
 
+                // did consumed typed value?
                 if (cursorTyped < typed.length()) {
                     removedChars += typed.length() - cursorTyped;
                 }
