@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+group 'org.playground.sphinx4'
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+
+}
+
+dependencies {
+
+    implementation 'edu.cmu.sphinx:sphinx4-core:5prealpha-SNAPSHOT'
+    implementation 'edu.cmu.sphinx:sphinx4-data:5prealpha-SNAPSHOT'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
