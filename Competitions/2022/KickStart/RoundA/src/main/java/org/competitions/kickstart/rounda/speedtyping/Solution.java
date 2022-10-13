@@ -28,8 +28,6 @@ public class Solution {
     }
 
     public static class Solver {
-        private static final char[] ALICE_VOWELS = new char[]{'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'};
-        private static final char[] NOBODY_VOWELS = new char[]{'Y', 'y'};
 
         private int numberOfTestCases;
         private int currentLine;
@@ -109,7 +107,6 @@ public class Solution {
 
         private String getImpossibleValue() {
             return "IMPOSSIBLE";
-
         }
 
         private boolean hasRemainingLines() {
