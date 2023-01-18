@@ -1,0 +1,9 @@
+input-files/
+products.db
+
+# PyCharm
+.idea/
+
+# Python files
+venv/
+
