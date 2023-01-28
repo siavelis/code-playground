@@ -167,6 +167,7 @@ if __name__ == '__main__':
 
     print("Saving data to database")
     db_connection = prepare_db()
+    products = sorted(products, key=lambda x: x.price_per_unit_and_weight())
     save_products(db_connection, products)
     db_connection.close()
     print("Finished")
