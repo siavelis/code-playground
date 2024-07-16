@@ -109,7 +109,7 @@ def parse_units(product_name):
 
 
 def prepare_db():
-    db_connection = sqlite3.connect("products.db")
+    db_connection = sqlite3.connect("products_v2.db")
 
     cursor = db_connection.cursor()
 
@@ -145,7 +145,7 @@ def save_products(db_connection, products):
 if __name__ == '__main__':
 
     products = []
-    page_items = load_json_files("./input-files")
+    page_items = load_json_files("./input-files/v2")
 
     print("Load data from input directory")
     for item in page_items:
